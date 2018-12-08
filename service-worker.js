@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/caiiiycuk/aravaili/precache-manifest.8affed914c8ef1e3d9c3cc00e8914611.js"
+  "/aravaili/precache-manifest.ce002faa50fdacb52c8da624e4daad5e.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/caiiiycuk/aravaili/index.html", {
+workbox.routing.registerNavigationRoute("/aravaili/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
