@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{5:function(e,i,a){e.exports=a(6)},6:function(e,i,a){"use strict";a.r(i);a(7),new(a(4).a)({root:"#app",name:"Aravaili - \u041a\u0440\u0430\u0441\u0438\u0432\u0430\u044f \u043a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c",id:"ru.aravaili",theme:"md",routes:[]}).views.create(".view-main")}},[[5,2,1]]]);
+//# sourceMappingURL=main.bfe6671d.chunk.js.map
