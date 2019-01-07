@@ -23,5 +23,5 @@ def inject(file, scripts, styles):
         f.write(contents)
 
 (scripts, styles) = create_injection()
-inject("build/nvkz/massage.html", scripts, styles)
-inject("build/nvkz/lashmaker.html", scripts, styles)
+inject("build/novokuznetsk/massage.html", scripts, styles)
+inject("build/novokuznetsk/lashmaker.html", scripts, styles)

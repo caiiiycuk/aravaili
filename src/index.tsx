@@ -1,6 +1,6 @@
-import { initIndexPage } from "./nvkz/index";
-import { initLashmakerPage } from "./nvkz/lashmaker";
-import { initMassagePage } from "./nvkz/massage";
+import { initIndexPage } from "./novokuznetsk/index";
+import { initLashmakerPage } from "./novokuznetsk/lashmaker";
+import { initMassagePage } from "./novokuznetsk/massage";
 
 if (location.href.indexOf("massage.html") > 0) {
   initMassagePage();
