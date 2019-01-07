@@ -24,3 +24,4 @@ def inject(file, scripts, styles):
 
 (scripts, styles) = create_injection()
 inject("build/nvkz/massage.html", scripts, styles)
+inject("build/nvkz/lashmaker.html", scripts, styles)

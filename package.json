@@ -17,7 +17,7 @@
     "typescript": "^3.2.2"
   },
   "scripts": {
-    "predeploy": "npm run build; python3 scripts/inject.py",
+    "predeploy": "node scripts/sitemap.js; npm run build; python3 scripts/inject.py",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -32,5 +32,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "sitemap": "^2.1.0"
+  }
 }
