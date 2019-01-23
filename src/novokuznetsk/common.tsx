@@ -26,6 +26,12 @@ export function createContactPopup(app: Framework7) {
                     label: true,
                 },
                 {
+                    text: "Позвонить +7 (908) 943 8167",
+                    onClick: () => {
+                        window.open("tel:+79089438167");
+                    },
+                },
+                {
                     text: "Почта",
                     onClick: () => {
                         window.open("mailto:aravaili@mail.ru");
@@ -47,6 +53,12 @@ export function createContactPopup(app: Framework7) {
                     text: "WhatsApp",
                     onClick: () => {
                         window.open("whatsapp://send/?phone=79089438167");
+                    },
+                },
+                {
+                    text: "Telegram",
+                    onClick: () => {
+                        window.open("tg://resolve?domain=79089438167");
                     },
                 },
                 {
