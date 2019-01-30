@@ -23,5 +23,8 @@ def inject(file, scripts, styles):
         f.write(contents)
 
 (scripts, styles) = create_injection()
-inject("build/novokuznetsk/massage.html", scripts, styles)
-inject("build/novokuznetsk/lashmaker.html", scripts, styles)
+
+for root, dirs, files in os.walk("build/novokuznetsk"):
+    for file in files:
+        if file.endswith(".html"):
+            inject(os.path.join(root, file), scripts, styles)

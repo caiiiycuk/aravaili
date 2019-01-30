@@ -17,7 +17,7 @@
     "typescript": "^3.2.2"
   },
   "scripts": {
-    "predeploy": "node scripts/sitemap.js; npm run build; python3 scripts/inject.py",
+    "predeploy": "python3 scripts/chrome-vk-generate-pages.py; node scripts/sitemap.js; npm run build; python3 scripts/inject.py",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -34,6 +34,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "node-dir": "^0.1.17",
     "sitemap": "^2.1.0"
   }
 }

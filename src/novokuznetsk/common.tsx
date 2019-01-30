@@ -6,7 +6,7 @@ export function createApp() {
         root: "#app",
         name: "Aravaili - Студия красоты, Новокузнецк",
         id: "ru.aravaili",
-        theme: "md",
+        // theme: "ios",
         routes: [],
         init: false,
     });
