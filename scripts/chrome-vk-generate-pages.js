@@ -13,24 +13,12 @@ function extract(pages) {
             'photo': document.getElementById('market_item_photo').src
         }
 
-        const content = `
-<li class="item-content">
-<div class="item-media"><img src="${data.photo}" width="44" /></div>
-<div class="item-inner">
-    <div class="item-title-row">
-        <div class="item-title">${data.name}</div>
-    </div>
-    <div class="item-subtitle">${data.price}</div>
-</div>
-</li>
-        `;
-
-        pages.push(content);
+        pages.push(data);
 
         const next = document.getElementById('wk_right_arrow');
 
         if (next.style["display"] === "none") {
-            console.log(pages.join("\n"));
+            console.log(JSON.stringify(pages));
             return;
         } else {
             next.click();
