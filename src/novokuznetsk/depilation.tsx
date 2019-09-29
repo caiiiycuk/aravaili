@@ -15,7 +15,7 @@ export function initDepilation() {
   app.on("init", () => {
     app.views.create(".view-main");
     const photos: string[] = [];
-    for (let i = 0; i < 5; ++i) {
+    for (let i = 0; i < 4; ++i) {
       photos.push("/img/depilation/" + i + ".jpg");
     }
     createGallery(app, photos);
