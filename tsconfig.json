@@ -1,0 +1,7 @@
+{
+    "include": ["cli"],
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "outDir": "build",
+    }
+}

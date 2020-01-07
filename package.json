@@ -1,0 +1,17 @@
+{
+  "name": "aravaili",
+  "version": "3",
+  "main": "index.js",
+  "repository": "https://github.com/caiiiycuk/aravaili/",
+  "author": "Aleksander Guryanov <caiiiycuk@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^13.1.4",
+    "dropbox": "^4.0.30",
+    "isomorphic-fetch": "^2.2.1",
+    "marked": "^0.8.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  }
+}
