@@ -1,5 +1,5 @@
 {
-    "include": ["cli"],
+    "include": ["cli", "browser"],
     "compilerOptions": {
         "esModuleInterop": true,
         "outDir": "build",
