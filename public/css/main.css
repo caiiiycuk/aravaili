@@ -123,6 +123,7 @@ a {
 .map {
     overflow: hidden;
     max-width: 100%;
+    align-self: flex-start;
 }
 
 .info-map {

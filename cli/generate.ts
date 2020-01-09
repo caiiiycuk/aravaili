@@ -56,7 +56,7 @@ renderer.paragraph = (text: string): string => {
 renderer.heading = (text, level) => {
     if (level === 1) {
         return "<div class=\"header\"><h1><a href=\"/\">" + text + "</a></h1>" +
-        `<button id="burger" class="hamburger hamburger--collapse" type="button">
+            `<button id="burger" class="hamburger hamburger--collapse" type="button">
             <span class="hamburger-box">
             <span class="hamburger-inner"></span>
             </span>
@@ -68,16 +68,25 @@ renderer.heading = (text, level) => {
     return "";
 };
 renderer.image = (href, title, text) => {
-    if (cardIndex === -1) {
-        return "<div class=\"stickyImage\" style=\"background: url(" + href + ")\">" +
+    if (cardIndex === -1 && header.length > 0) {
+        const content = "<div class=\"stickyImage\" style=\"background: url(" + href + ")\">" +
             "<h2>" + header + "</h2>" +
             "</div><div class=\"info-map\"><div class=\"info\">";
+        header = "";
+        return content;
     }
 
     return "<img src=\"" + href + "\">";
 };
 renderer.link = (href, title, text) => {
     return "<a href=\"" + href + "\" target=\"_self\"><div class=\"button\">" + text + "</div></a>";
+};
+renderer.strong = (text) => {
+    if (text.startsWith("красный:")) {
+        text = text.substr("красный:".length);
+        return `<span style="color:red">` + text + "</span>";
+    }
+    return text;
 };
 
 const files = [
@@ -86,6 +95,7 @@ const files = [
     "Студия “Aravaili” - Депиляция, ваксинг, шугаринг.md",
     "Студия “Aravaili” - Лэшмейкер и бровист.md",
     "Студия “Aravaili” - парикмахерские услуги..md",
+    "Студия Aravaili - Акции.md",
 ];
 
 async function generate(file: string): Promise<Page> {
@@ -111,6 +121,10 @@ async function generate(file: string): Promise<Page> {
         title = title.charAt(0).toUpperCase() + title.slice(1);
     }
 
+    if (page === "") {
+        page = "/" + transliterate(title) + ".html";
+    }
+
     return {
         file: page,
         title,
@@ -130,3 +144,11 @@ async function generateAll() {
 }
 
 generateAll().then(() => log("Well done...")).catch(fatal);
+
+const a = { Ё: "YO", Й: "I", Ц: "TS", У: "U", К: "K", Е: "E", Н: "N", Г: "G", Ш: "SH", Щ: "SCH", З: "Z", Х: "H", Ъ: "'", ё: "yo", й: "i", ц: "ts", у: "u", к: "k", е: "e", н: "n", г: "g", ш: "sh", щ: "sch", з: "z", х: "h", ъ: "'", Ф: "F", Ы: "I", В: "V", А: "a", П: "P", Р: "R", О: "O", Л: "L", Д: "D", Ж: "ZH", Э: "E", ф: "f", ы: "i", в: "v", а: "a", п: "p", р: "r", о: "o", л: "l", д: "d", ж: "zh", э: "e", Я: "Ya", Ч: "CH", С: "S", М: "M", И: "I", Т: "T", Ь: "'", Б: "B", Ю: "YU", я: "ya", ч: "ch", с: "s", м: "m", и: "i", т: "t", ь: "'", б: "b", ю: "yu" };
+
+function transliterate(word) {
+    return word.split("").map((char) => {
+        return a[char] || char;
+    }).join("");
+}
