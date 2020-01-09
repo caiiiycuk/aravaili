@@ -44,7 +44,9 @@ renderer.paragraph = (text: string): string => {
         (cardIndex > 0 && header.length > 0 ? "<h2>" + header + "</h2>" : "") +
         text +
         (cardIndex === 0 ?
-            '</div><div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2358.3248117329445!2d87.13793991596218!3d53.76590475090238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42d0c1b844c70217%3A0xbe6c6123aaaa1dfa!2z0KHRgtGD0LTQuNGPICJBcmF2YWlsaSI!5e0!3m2!1sru!2sru!4v1578486074090!5m2!1sru!2sru" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div></div>' :
+            `</div><div class="map">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af79851170403b31c5c96e5face527836b3d87f775dd50aa02ca4d95680a3c6c7&amp;source=constructor" width="400" height="400" frameborder="0"></iframe>
+            </div></div>` :
             "") +
         (cardIndex === 0 ? "<hr><div class=\"button\" onclick=\"javascript:showContactModal()\">Записаться</div>" : "") +
         "</div>");
