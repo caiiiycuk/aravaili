@@ -6,8 +6,9 @@ import { Page } from "./model";
 export function writeHtml(pages: Page[]) {
   let burgerLinks = "<div id=\"burger-modal\" class=\"burger-links\">";
   for (const page of pages) {
-    burgerLinks += "<a href=\"" + page.file + "\">" + page.title + "</a>"; 
+    burgerLinks += "<a href=\"" + page.file + "\">" + page.title + "</a>";
   }
+  burgerLinks += "<div class=\"red button\" onclick=\"javascript:showContactModal()\">Записаться</div>";
   burgerLinks += "</div>";
 
   for (const page of pages) {
@@ -49,8 +50,9 @@ function generateHtml(file: string, body: string, title: string) {
               <a target="_blank" href="https://vk.com/aravaili"><div class="button">Вконтакте</div></a>
               <a target="_blank" href="https://www.instagram.com/aravaili"><div class="button">Instagram</div></a>
               <div class="space"></div>
-             </div>
+            </div>
           </div>
+          <div class="fab" onclick="javascript:showContactModal()"></div>
         </div>
         <script src="/js/main.js"></script>
       </body>

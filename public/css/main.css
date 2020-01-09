@@ -191,16 +191,42 @@ h1 a {
     background-color: white !important;
 }
 
-.burger-links {
+.burger-links, .contacts-modal {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     background: white;
-    display: none;
     flex-flow: column;
     padding-top: 5em;
     z-index: 2;
+}
+
+.burger-links {
+    display: none;
+}
+
+.contacts-modal {
+    right: 0;
+    padding: 5em 1em 1em 1em;
+    display: flex;
+    align-items: center;
+}
+
+.contacts-label {
+    color: rgb(204, 56, 56);
+}
+
+.contacts-button, .contacts-exit {
+    cursor: pointer;
+    margin-top: 0.5em;
+    width: 100%;
+    text-align: center;
+}
+
+.contacts-exit, .red {
+    color: rgb(204, 56, 56);
+    border: 2px solid rgb(204, 56, 56);
 }
 
 .burger-links a {
@@ -224,4 +250,38 @@ h1 a {
 	width: 100%;
 	-webkit-transform-origin: 50% 0;
 	transform-origin: 50% 0;
+}
+
+.burger-links .button {
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+.fab {
+	position: fixed;
+	width: 3em;
+	height: 3em;
+	z-index: 2;
+	right: 2em;
+	bottom: 2em;
+    cursor: pointer;
+    background: url(/img/phone-call.png) center;
+    background-size: cover;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+}
+
+@keyframes shake {
+    0%, 100% {
+      transform: scale(1);
+    }
+
+    40%, 60% {
+      transform: scale(1);
+    }
+    
+    50% {
+      transform: scale(1.3);
+    }
 }

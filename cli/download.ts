@@ -2,9 +2,10 @@ require("isomorphic-fetch");
 
 import Dropbox from "dropbox";
 import { fatal, log } from "./log";
+import token from "./token";
 
 const dbx = new Dropbox.Dropbox({
-    accessToken: "9seufdWScBAAAAAAAAAFU9T5jaEMnW9HGXuUUC-briRNxg7Z0rgdis85hQt1PZZd",
+    accessToken: token,
 });
 
 // dbx.filesListFolder({path: "/dillinger/"}).then(log).catch(fatal);
