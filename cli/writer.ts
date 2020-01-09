@@ -63,3 +63,22 @@ function generateHtml(file: string, body: string, title: string) {
   fs.ensureDirSync(path.dirname(target));
   fs.writeFileSync(target, head + body + footer, "utf-8");
 }
+
+export function writeSitemap(pages: Page[]) {
+  let sitemapBody = `<?xml version="1.0" encoding="UTF-8"?>
+\t<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+`;
+
+  const now = new Date().toISOString();
+
+  for (const next of pages) {
+    sitemapBody += "\t<url>\n" +
+      "\t\t<loc>" + next.file + "</loc>\n" +
+      "\t\t<lastmod>" + now + "</lastmod>\n" +
+      "\t</url>\n";
+  }
+
+  sitemapBody += "\t</urlset>";
+
+  fs.writeFileSync("public/sitemap.xml", sitemapBody, "utf-8");
+}

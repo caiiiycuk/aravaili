@@ -2,14 +2,20 @@ import download from "./download";
 import { fatal, log } from "./log";
 
 import marked, { Renderer } from "marked";
-import { writeHtml } from "./writer";
+import { writeHtml, writeSitemap } from "./writer";
 
 import * as fse from "fs-extra";
 import { Page } from "./model";
 
+const names = [
+    "Мария", "Марина", "Инна", "Виктория", "Олеся", "Алла", "Юлия", "Яна", "Надежда", "Диана", "Дина", "Людмила", "Кристина", "Елизавета", "Эльвира", "Дарья", "Элина", "Эвелина", "Ангелина", "Татьяна", "Анжела", "(Анжелика)", "Алина", "Маргарита", "Динара", "Анастасия", "Наталья", "Лаура", "Валерия", "Наташа", "Изольда", "Ирина", "Альбина", "Амина", "Арина", "Оксана", "Наталия", "Вероника", "Светлана", "Римма", "Ксения", "Александра", "Аделаида", "(Аделина)", "Полина", "Лена", "Снежана", "Елена", "Валентина", "Фарида", "Карина", "Рита", "Яна", "Анна", "Евгения", "Алиса", "Екатерина", "Сабина", "Лидия", "Галина", "Рената", "Лариса",
+];
+
 let page;
 let header;
+let cardHeader;
 let cardIndex;
+let nameIndex = 0;
 
 const renderer = new Renderer();
 renderer.codespan = (code: string) => {
@@ -23,14 +29,26 @@ renderer.paragraph = (text: string): string => {
         return "";
     }
     cardIndex = cardIndex + 1;
+    const review = cardHeader.toLowerCase().indexOf("отзывы") >= 0;
+
+    if (review) {
+        const parts = text.split("<br>");
+        text = "";
+        for (const next of parts) {
+            nameIndex++;
+            text += "<div class=\"review\"><div class=\"review-header\">" + names[nameIndex] + "</div>" + next + "</div>";
+        }
+    }
+
     const rendered = ("<div class=\"card card-" + cardIndex + "\">" +
-        (cardIndex > 0 ? "<h2>" + header + "</h2>" : "") +
+        (cardIndex > 0 && header.length > 0 ? "<h2>" + header + "</h2>" : "") +
         text +
         (cardIndex === 0 ?
             '</div><div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2358.3248117329445!2d87.13793991596218!3d53.76590475090238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42d0c1b844c70217%3A0xbe6c6123aaaa1dfa!2z0KHRgtGD0LTQuNGPICJBcmF2YWlsaSI!5e0!3m2!1sru!2sru!4v1578486074090!5m2!1sru!2sru" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div></div>' :
             "") +
         (cardIndex === 0 ? "<hr><div class=\"button\" onclick=\"javascript:showContactModal()\">Записаться</div>" : "") +
         "</div>");
+    header = "";
     return rendered;
 };
 renderer.heading = (text, level) => {
@@ -44,6 +62,7 @@ renderer.heading = (text, level) => {
     }
 
     header = text;
+    cardHeader = text;
     return "";
 };
 renderer.image = (href, title, text) => {
@@ -71,6 +90,7 @@ async function generate(file: string): Promise<Page> {
     page = "";
     header = "";
     cardIndex = -1;
+    cardHeader = "";
 
     const source = await download("/dillinger/" + file.toLowerCase());
     const body = marked(source.replace(/(#+)/g, "\n\n$1").replace(/\n\n/g, "\n"), {
@@ -103,6 +123,7 @@ async function generateAll() {
     }
 
     writeHtml(pages);
+    writeSitemap(pages);
     fse.copySync("build/browser/main.js", "public/js/main.js");
 }
 
