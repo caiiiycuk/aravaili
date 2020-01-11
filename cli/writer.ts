@@ -59,7 +59,7 @@ function generateHtml(file: string, body: string, title: string) {
     </html>
     `;
 
-  const target = "public" + file;
+  const target = "docs" + file;
   fs.ensureDirSync(path.dirname(target));
   fs.writeFileSync(target, head + body + footer, "utf-8");
 }
@@ -80,5 +80,5 @@ export function writeSitemap(pages: Page[]) {
 
   sitemapBody += "\t</urlset>";
 
-  fs.writeFileSync("public/sitemap.xml", sitemapBody, "utf-8");
+  fs.writeFileSync("docs/sitemap.xml", sitemapBody, "utf-8");
 }

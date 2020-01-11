@@ -140,7 +140,7 @@ async function generateAll() {
 
     writeHtml(pages);
     writeSitemap(pages);
-    fse.copySync("build/browser/main.js", "public/js/main.js");
+    fse.copySync("build/browser/main.js", "docs/js/main.js");
 }
 
 generateAll().then(() => log("Well done...")).catch(fatal);
