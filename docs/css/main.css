@@ -55,7 +55,7 @@ body {
     height: 30vh;
     max-height: 300px;
     background-size: cover !important;
-    background-position: right !important;
+    background-position: bottom right !important;
     border-radius: 4px 4px 0px 0px;
     display: flex;
     align-items: flex-end;
