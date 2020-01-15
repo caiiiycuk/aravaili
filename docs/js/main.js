@@ -42,7 +42,7 @@ function showContactModal() {
             {
                 text: "Вконтакте",
                 onClick: function () {
-                    window.open("https://vk.com/aravaili");
+                    window.open("https://vk.com/aravailiru");
                 }
             },
             {
@@ -96,7 +96,7 @@ function showContactModal() {
             {
                 text: "Вконтакте",
                 onClick: function () {
-                    window.open("https://vk.com/aravaili");
+                    window.open("https://vk.com/aravailiru");
                 }
             },
             {

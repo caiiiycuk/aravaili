@@ -84,9 +84,13 @@ renderer.link = (href, title, text) => {
 renderer.strong = (text) => {
     if (text.startsWith("красный:")) {
         text = text.substr("красный:".length);
-        return `<span style="color:red;font-size:2em;">` + text + "</span>";
+        return `<span style="color:red;font-size:1.5em;">` + text + "</span>";
     }
-    return text;
+    if (text.startsWith("синий:")) {
+        text = text.substr("синий:".length);
+        return `<span style="color:blue;font-size:1.5em;">` + text + "</span>";
+    }
+    return "<b>" + text + "</b>";
 };
 
 const files = [
